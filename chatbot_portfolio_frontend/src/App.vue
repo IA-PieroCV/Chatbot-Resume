@@ -12,7 +12,7 @@ const user_promt: Ref<string> = ref('')
   <div class="principal flex justify-center items-center h-full flex-col">
     <TitleComponent />
     <ChatComponent />
-    <InputTextComponent v-model="user_promt"/>
+    <InputTextComponent v-model="user_promt" />
   </div>
 </template>
 

@@ -13,14 +13,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch} from 'vue';
-import type{Ref} from 'vue';
 import ChatLineComponent from '@/components/ChatLineComponent.vue'
-import { useMessageStore } from '../stores/chat';
-
+import { useMessageStore } from '../stores/chat'
 
 const messageStore = useMessageStore()
-
 </script>
 
 <style scoped>

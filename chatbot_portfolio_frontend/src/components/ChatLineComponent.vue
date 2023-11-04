@@ -6,7 +6,8 @@
       class="rounded-full mx-2"
     />
     <div class="bg-white rounded-3xl py-3 px-3 mx-1 max-w-4xl">
-      <p v-if="props.state" class="font-mono whitespace-normal">{{ actual_text }}
+      <p v-if="props.state" class="font-mono whitespace-normal">
+        {{ actual_text }}
         <span v-if="props.text !== actual_text" class="cursor"></span>
       </p>
       <p v-else class="py-3">
@@ -19,18 +20,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref} from 'vue';
-import type{Ref} from "vue";
+import { computed, onMounted, ref } from 'vue'
+import type { Ref } from 'vue'
 
 import IAPicture from '@/assets/ai.jpg'
 import HumanPicture from '@/assets/human.jpg'
 
-const actual_text:Ref<string>= ref("") 
+const actual_text: Ref<string> = ref('')
 const props = defineProps({
   role: String,
   text: String,
   identifier: Number,
-  state:Boolean
+  state: Boolean
 })
 
 const classes_div = computed<string>(
@@ -39,27 +40,24 @@ const classes_div = computed<string>(
 
 function type_text() {
   if (props.text && actual_text.value !== props.text) {
-    actual_text.value = props.text?.slice(0, actual_text.value.length + 1)??'';
-    setTimeout(type_text, 50,);
-  }
-  else{
-    setTimeout(type_text, 50);
+    actual_text.value = props.text?.slice(0, actual_text.value.length + 1) ?? ''
+    setTimeout(type_text, 50)
+  } else {
+    setTimeout(type_text, 50)
   }
 }
 
-onMounted(()=>{
-    if (props.role ==="ia"){
-      type_text()
-    }
-    else{
-      actual_text.value = props.text??''
-    }
+onMounted(() => {
+  if (props.role === 'ia') {
+    type_text()
+  } else {
+    actual_text.value = props.text ?? ''
+  }
 })
-
 </script>
 
 <style scoped>
-.cursor{
+.cursor {
   border: 5px solid black;
   background-color: black;
 }
